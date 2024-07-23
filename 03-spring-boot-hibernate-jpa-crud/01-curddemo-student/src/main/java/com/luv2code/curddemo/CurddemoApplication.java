@@ -1,5 +1,5 @@
 package com.luv2code.curddemo;
-
+import java.util.List;
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.luv2code.curddemo.DAO.StudentDAO;
 import com.luv2code.curddemo.entity.Student;
@@ -19,10 +19,47 @@ public class CurddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner->{
-//			createStudent(studentDAO);
+		//	createStudent(studentDAO);
 			CreateMultipleStudents(studentDAO);
-			ReadStudent(studentDAO);
+		//	ReadStudent(studentDAO);
+		//	GetAllStudents(studentDAO);
+		//	GetAllStudentsByLastName(studentDAO);
+		//	UpdateStudent(studentDAO);
+		//	DeleteStudent(studentDAO);
+		//	DeleteAllStudents(studentDAO);
 		};
+	}
+
+	private void DeleteAllStudents(StudentDAO studentDAO) {
+		int deletedRows = studentDAO.deleteAll();
+
+		System.out.println("number of rows deleted : " + deletedRows);
+	}
+
+	private void DeleteStudent(StudentDAO studentDAO) {
+		int studentId = 4;
+		studentDAO.delete(studentId);
+	}
+
+	private void UpdateStudent(StudentDAO studentDAO) {
+		int studentId = 1;
+		Student student = studentDAO.findStudentById(studentId);
+		student.setLastName("alashkar");
+		studentDAO.update(student);
+	}
+
+	private void GetAllStudentsByLastName(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findByLastName("Raslan");
+		for(Student student : students){
+			System.out.println(student);
+		}
+	}
+
+	private void GetAllStudents(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findAll();
+		for(Student student : students){
+			System.out.println(student);
+		}
 	}
 
 	private void ReadStudent(StudentDAO studentDAO) {
