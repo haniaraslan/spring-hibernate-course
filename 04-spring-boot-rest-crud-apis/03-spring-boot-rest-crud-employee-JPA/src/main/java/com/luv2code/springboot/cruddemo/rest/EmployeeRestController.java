@@ -1,6 +1,5 @@
 package com.luv2code.springboot.cruddemo.rest;
 
-import com.luv2code.springboot.cruddemo.DAO.EmployeeDAO;
 import com.luv2code.springboot.cruddemo.Entity.Employee;
 import com.luv2code.springboot.cruddemo.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +52,7 @@ public class EmployeeRestController {
         }
 
         employeeService.deleteEmployeeByID(employeeId);
-
+        
         return "Employee Deleted Successfully";
     }
 
