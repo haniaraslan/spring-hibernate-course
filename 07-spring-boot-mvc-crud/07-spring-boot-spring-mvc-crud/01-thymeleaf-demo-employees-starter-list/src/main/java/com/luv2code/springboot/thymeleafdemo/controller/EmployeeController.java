@@ -50,6 +50,7 @@ public class EmployeeController {
 	@PostMapping("/save")
 	public String saveEmployee(@ModelAttribute("employee") Employee employee){
 
+		// save employee using the service
 		employeeService.save(employee);
 
 		// return the employees list page
@@ -73,7 +74,7 @@ public class EmployeeController {
 	public String deleteEmployee(@RequestParam("employeeId") int id){
 
 		employeeService.deleteById(id);
-		// get the employee from the service
+		// get employees list from the service
 		List<Employee> employee = employeeService.findAll();
 
 		// return the employees list page
