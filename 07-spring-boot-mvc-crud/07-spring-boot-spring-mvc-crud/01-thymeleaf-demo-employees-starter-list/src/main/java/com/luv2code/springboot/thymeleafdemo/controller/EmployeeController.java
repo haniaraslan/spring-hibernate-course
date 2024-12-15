@@ -30,6 +30,7 @@ public class EmployeeController {
 		// add to the spring model
 		theModel.addAttribute("employees", theEmployees);
 
+		// return the employees list page
 		return "employees/list-employees";
 	}
 
@@ -51,6 +52,7 @@ public class EmployeeController {
 
 		employeeService.save(employee);
 
+		// return the employees list page
 		return "redirect:/employees/list";
 	}
 
@@ -74,7 +76,7 @@ public class EmployeeController {
 		// get the employee from the service
 		List<Employee> employee = employeeService.findAll();
 
-		// return the form html page
+		// return the employees list page
 		return "redirect:/employees/list";
 	}
 }
